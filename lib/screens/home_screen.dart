@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import '../widgets/expansion_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
+  static const List<String> liveScoreSubTitles = [
+    'Live Scores Match',
+    'Schedules',
+    'Results',
+  ];
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -33,246 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            ExpansionTile(
-              leading: Icon(Icons.calendar_month),
-              title: Text('Live Scores'),
-              children: [
-                Container(
-                  decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ListTile(
-                        contentPadding: EdgeInsets.only(left: 40.0),
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Live Score Menu',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Schedule',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Results',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            ExpansionDrawer(
+              title: 'Live Scores',
+              subTitles: HomeScreen.liveScoreSubTitles,
             ),
-            ExpansionTile(
-              leading: Icon(Icons.calendar_month),
-              title: Text('Live Scores'),
-              children: [
-                Container(
-                  decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ListTile(
-                        contentPadding: EdgeInsets.only(left: 40.0),
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Live Score Menu',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Schedule',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Results',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            ExpansionTile(
-              leading: Icon(Icons.calendar_month),
-              title: Text('Live Scores'),
-              children: [
-                Container(
-                  decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ListTile(
-                        contentPadding: EdgeInsets.only(left: 40.0),
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Live Score Menu',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Schedule',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Results',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            ExpansionTile(
-              leading: Icon(Icons.calendar_month),
-              title: Text('Live Scores'),
-              children: [
-                Container(
-                  decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ListTile(
-                        contentPadding: EdgeInsets.only(left: 40.0),
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Live Score Menu',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Schedule',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextButton(
-                              onPressed: () {
-                                // Handle Live Score Menu tap
-                              },
-                              child: Text(
-                                'Results',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            ExpansionDrawer(title: 'Schedules'),
+            // Add more ExpansionDrawers as needed
           ],
         ),
       ),
