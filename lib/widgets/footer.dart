@@ -15,28 +15,36 @@ class _FooterState extends State<Footer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 10, bottom: 20, left: 10, right: 10),
       decoration: BoxDecoration(color: const Color.fromARGB(255, 30, 28, 28)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ...widget.footerItems.map(
-            (subtitle) => Padding(
-              padding: const EdgeInsets.only(right: 0.0),
+            (subtitle) => Expanded(
               child: TextButton(
+                style: TextButton.styleFrom(
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
+                ),
                 onPressed: () {
                   // Handle tap
                 },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      widget.footerIcons[widget.footerItems.indexOf(subtitle)],
-                      color: Colors.white,
-                    ),
-                    SizedBox(height: 4),
-                    Text(subtitle, style: TextStyle(color: Colors.white)),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        widget.footerIcons[widget.footerItems.indexOf(
+                          subtitle,
+                        )],
+                        color: Colors.white,
+                      ),
+                      SizedBox(height: 4),
+                      Text(subtitle, style: TextStyle(color: Colors.white)),
+                    ],
+                  ),
                 ),
               ),
             ),
