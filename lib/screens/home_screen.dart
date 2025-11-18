@@ -137,25 +137,27 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             }).toList(),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 15.0),
-            height: MediaQuery.of(context).size.height * 0.5396,
-            width: MediaQuery.of(context).size.width, // Set a fixed height
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 36, 34, 34),
-            ),
-            child: Scrollbar(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    // Add your data widgets here
-                    for (var item in HomeScreen.newsItems)
-                      ListTile(
-                        title: Text(item['title']!),
-                        subtitle: Text(item['summary']!),
-                        textColor: Colors.white,
-                      ),
-                  ],
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(top: 15.0),
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: MediaQuery.of(context).size.width, // Set a fixed height
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 36, 34, 34),
+              ),
+              child: Scrollbar(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      // Add your data widgets here
+                      for (var item in HomeScreen.newsItems)
+                        ListTile(
+                          title: Text(item['title']!),
+                          subtitle: Text(item['summary']!),
+                          textColor: Colors.white,
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),
