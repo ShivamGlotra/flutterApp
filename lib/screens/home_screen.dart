@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:game_app/widgets/score_cards.dart';
 import '../widgets/expansion_drawer.dart';
 import '../widgets/footer.dart';
-import '../widgets/scroll_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -60,7 +60,34 @@ class HomeScreen extends StatefulWidget {
       'summary':
           'Create UIs that adapt to different screen sizes and orientations.',
     },
+    {
+      'title': 'Integrating Firebase',
+      'summary':
+          'Learn how to integrate Firebase services into your Flutter apps.',
+    },
+    {
+      'title': 'Animations in Flutter',
+      'summary':
+          'Add engaging animations to enhance user experience in your apps.',
+    },
+    {
+      'title': 'Deploying Flutter Apps',
+      'summary':
+          'A guide to deploying your Flutter applications to various platforms.',
+    },
+    {
+      'title': 'Accessibility in Flutter',
+      'summary':
+          'Ensure your apps are accessible to all users with Flutter\'s accessibility features.',
+    },
+    {
+      'title': 'Using Packages Effectively',
+      'summary':
+          'Discover how to leverage packages from pub.dev to enhance your Flutter projects.',
+    },
   ];
+
+  static String _selectedDropdownValue = 'Cricket';
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -69,17 +96,50 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 216, 207, 207),
+      backgroundColor: const Color.fromARGB(255, 30, 28, 28),
       appBar: AppBar(
-        title: Text('@GETSCORES'),
-        backgroundColor: const Color.fromARGB(255, 216, 207, 207),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.sports_score_rounded, size: 40),
+            SizedBox(width: 16),
+            DropdownButton<String>(
+              value: HomeScreen._selectedDropdownValue,
+              alignment: Alignment.center,
+              dropdownColor: const Color.fromARGB(255, 30, 28, 28),
+              style: TextStyle(color: const Color.fromARGB(255, 196, 106, 10)),
+              items:
+                  <String>[
+                    'Cricket',
+                    'Soccer',
+                    'Baseball',
+                    'Basketball',
+                    'Tennis',
+                    'Hockey',
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  HomeScreen._selectedDropdownValue = newValue!;
+                });
+              },
+              underline: SizedBox(),
+            ),
+          ],
+        ),
+        foregroundColor: const Color.fromARGB(255, 196, 106, 10),
+        backgroundColor: const Color.fromARGB(255, 30, 28, 28),
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             Container(
-              height: 62, // Reduced height
+              height: 61, // Reduced height
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 30, 28, 28),
               ),
@@ -110,42 +170,22 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CarouselSlider(
-            options: CarouselOptions(
-              height: MediaQuery.of(context).size.width * 0.35,
-              autoPlay: false,
-              viewportFraction: 0.7,
-            ),
-            items: [1, 2, 3, 4, 5].map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 5.0,
-                      vertical: 5.0,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 36, 34, 34),
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Center(
-                      child: Text('Slide $i', style: TextStyle(fontSize: 16.0)),
-                    ),
-                  );
-                },
-              );
-            }).toList(),
-          ),
+          ScoreCards(),
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(top: 15.0),
+              margin: EdgeInsets.only(top: 30.0),
               height: MediaQuery.of(context).size.height * 0.4,
               width: MediaQuery.of(context).size.width, // Set a fixed height
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 36, 34, 34),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15.0),
+                  topRight: Radius.circular(15.0),
+                ),
               ),
               child: Scrollbar(
+                thumbVisibility: true,
+                thickness: 8,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -155,6 +195,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           title: Text(item['title']!),
                           subtitle: Text(item['summary']!),
                           textColor: Colors.white,
+                          iconColor: Colors.white,
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 30.0,
+                            vertical: 4.0,
+                          ),
                         ),
                     ],
                   ),
