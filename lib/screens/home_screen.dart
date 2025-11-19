@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.sports_score_rounded, size: 40),
+            Icon(Icons.sports_cricket, size: 40),
             SizedBox(width: 16),
             DropdownButton<String>(
               value: HomeScreen._selectedDropdownValue,
@@ -155,13 +155,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            ExpansionDrawer(
-              title: 'Live Scores',
-              subTitles: HomeScreen.liveScoreSubTitles,
-            ),
-            ExpansionDrawer(
-              title: 'Schedules',
-              subTitles: HomeScreen.liveScoreSubTitles,
+            Container(
+              color: Colors.grey[350],
+              child: Column(
+                children: [
+                  ExpansionDrawer(
+                    title: 'Live Scores',
+                    subTitles: HomeScreen.liveScoreSubTitles,
+                  ),
+                  ExpansionDrawer(
+                    title: 'Schedules',
+                    subTitles: HomeScreen.liveScoreSubTitles,
+                  ),
+                ],
+              ),
             ),
             // Add more ExpansionDrawers as needed
           ],
