@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class ScoreCards extends StatefulWidget {
+  static Color favoriteColor = const Color.fromARGB(255, 85, 81, 81);
   const ScoreCards({super.key});
 
   @override
@@ -73,7 +74,18 @@ class _ScoreCardsState extends State<ScoreCards> {
                               icon: Icon(Icons.favorite),
                               padding: EdgeInsets.all(0),
                               iconSize: 20,
-                              onPressed: () {},
+                              color: ScoreCards.favoriteColor,
+                              onPressed: () {
+                                setState(() {
+                                  if (ScoreCards.favoriteColor ==
+                                      const Color.fromARGB(255, 85, 81, 81)) {
+                                    ScoreCards.favoriteColor = Colors.red;
+                                  } else {
+                                    ScoreCards.favoriteColor =
+                                        const Color.fromARGB(255, 85, 81, 81);
+                                  }
+                                });
+                              },
                             ),
                           ],
                         ),
