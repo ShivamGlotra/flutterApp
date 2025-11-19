@@ -29,6 +29,36 @@ class _FooterState extends State<Footer> {
                 ),
                 onPressed: () {
                   // Handle tap
+                  switch (subtitle) {
+                    case 'Home':
+                      if (ModalRoute.of(context)?.settings.name != '/') {
+                        Navigator.pushNamed(context, '/');
+                      }
+                      break;
+                    case 'Matches':
+                      if (ModalRoute.of(context)?.settings.name != '/matches') {
+                        Navigator.pushNamed(context, '/matches');
+                      }
+                      break;
+                    case 'Players':
+                      if (ModalRoute.of(context)?.settings.name != '/players') {
+                        Navigator.pushNamed(context, '/players');
+                      }
+                      break;
+                    case 'Teams':
+                      if (ModalRoute.of(context)?.settings.name != '/teams') {
+                        Navigator.pushNamed(context, '/teams');
+                      }
+                      break;
+                    case 'Settings':
+                      if (ModalRoute.of(context)?.settings.name !=
+                          '/settings') {
+                        Navigator.pushNamed(context, '/settings');
+                      }
+                      break;
+                    default:
+                      break;
+                  }
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
