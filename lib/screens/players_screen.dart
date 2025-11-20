@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/footer.dart';
 import 'home_screen.dart';
 
 class PlayersScreen extends StatefulWidget {
@@ -25,10 +24,6 @@ class _PlayersScreenState extends State<PlayersScreen> {
         backgroundColor: const Color.fromARGB(255, 30, 28, 28),
       ),
       body: Center(child: Text('Players Screen Content')),
-      bottomNavigationBar: Footer(
-        footerItems: HomeScreen.footerItems,
-        footerIcons: HomeScreen.footerIcons,
-      ),
     );
   }
 }

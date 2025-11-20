@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/footer.dart';
-import 'home_screen.dart';
 
 class MatchesScreen extends StatefulWidget {
   const MatchesScreen({Key? key}) : super(key: key);
@@ -53,10 +51,6 @@ class _MatchesScreenState extends State<MatchesScreen>
         ),
       ),
       body: Center(child: Text('Matches Screen Content')),
-      bottomNavigationBar: Footer(
-        footerItems: HomeScreen.footerItems,
-        footerIcons: HomeScreen.footerIcons,
-      ),
     );
   }
 }
