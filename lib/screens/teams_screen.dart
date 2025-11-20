@@ -17,7 +17,10 @@ class _TeamsScreenState extends State<TeamsScreen> {
       appBar: AppBar(
         title: Text('Teams'),
         automaticallyImplyLeading: false,
-        foregroundColor: const Color.fromARGB(255, 196, 106, 10),
+        titleTextStyle: const TextStyle(
+          fontSize: 25,
+          color: Color.fromARGB(255, 246, 130, 6),
+        ),
         backgroundColor: const Color.fromARGB(255, 30, 28, 28),
       ),
       body: Center(child: Text('Teams Screen Content')),
