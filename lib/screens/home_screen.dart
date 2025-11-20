@@ -137,6 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: const Color.fromARGB(255, 30, 28, 28),
       ),
       drawer: Drawer(
+        backgroundColor: Colors.grey[350],
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -157,20 +158,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Container(
-              color: Colors.grey[350],
-              child: Column(
-                children: [
-                  ExpansionDrawer(
-                    title: 'Live Scores',
-                    subTitles: HomeScreen.liveScoreSubTitles,
-                  ),
-                  ExpansionDrawer(
-                    title: 'Schedules',
-                    subTitles: HomeScreen.liveScoreSubTitles,
-                  ),
-                ],
-              ),
+            Column(
+              children: [
+                ExpansionDrawer(
+                  title: 'Live Scores',
+                  subTitles: HomeScreen.liveScoreSubTitles,
+                ),
+                ExpansionDrawer(
+                  title: 'Schedules',
+                  subTitles: HomeScreen.liveScoreSubTitles,
+                ),
+              ],
             ),
             // Add more ExpansionDrawers as needed
           ],
