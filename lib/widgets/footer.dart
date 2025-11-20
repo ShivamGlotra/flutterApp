@@ -12,15 +12,29 @@ class Footer extends StatefulWidget {
 }
 
 class _FooterState extends State<Footer> {
+  String selectedRoute = '/';
+
   @override
   Widget build(BuildContext context) {
+    final currentRoute = ModalRoute.of(context)?.settings.name ?? '/';
+    final routeMap = {
+      'Home': '/',
+      'Matches': '/matches',
+      'Players': '/players',
+      'Teams': '/teams',
+      'Settings': '/settings',
+    };
     return Container(
       decoration: BoxDecoration(color: const Color.fromARGB(255, 30, 28, 28)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ...widget.footerItems.map(
-            (subtitle) => Expanded(
+          ...widget.footerItems.map((subtitle) {
+            final route = routeMap[subtitle] ?? '/';
+            final isSelected = currentRoute == route;
+            final selectedColor = Color.fromARGB(255, 246, 130, 6);
+            final unselectedColor = Colors.white;
+            return Expanded(
               child: TextButton(
                 style: TextButton.styleFrom(
                   shape: const RoundedRectangleBorder(
@@ -28,36 +42,11 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
                 onPressed: () {
-                  // Handle tap
-                  switch (subtitle) {
-                    case 'Home':
-                      if (ModalRoute.of(context)?.settings.name != '/') {
-                        Navigator.pushNamed(context, '/');
-                      }
-                      break;
-                    case 'Matches':
-                      if (ModalRoute.of(context)?.settings.name != '/matches') {
-                        Navigator.pushNamed(context, '/matches');
-                      }
-                      break;
-                    case 'Players':
-                      if (ModalRoute.of(context)?.settings.name != '/players') {
-                        Navigator.pushNamed(context, '/players');
-                      }
-                      break;
-                    case 'Teams':
-                      if (ModalRoute.of(context)?.settings.name != '/teams') {
-                        Navigator.pushNamed(context, '/teams');
-                      }
-                      break;
-                    case 'Settings':
-                      if (ModalRoute.of(context)?.settings.name !=
-                          '/settings') {
-                        Navigator.pushNamed(context, '/settings');
-                      }
-                      break;
-                    default:
-                      break;
+                  setState(() {
+                    selectedRoute = route;
+                  });
+                  if (currentRoute != route) {
+                    Navigator.pushNamed(context, route);
                   }
                 },
                 child: Padding(
@@ -69,16 +58,21 @@ class _FooterState extends State<Footer> {
                         widget.footerIcons[widget.footerItems.indexOf(
                           subtitle,
                         )],
-                        color: Colors.white,
+                        color: isSelected ? selectedColor : unselectedColor,
                       ),
                       SizedBox(height: 4),
-                      Text(subtitle, style: TextStyle(color: Colors.white)),
+                      Text(
+                        subtitle,
+                        style: TextStyle(
+                          color: isSelected ? selectedColor : unselectedColor,
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
-            ),
-          ),
+            );
+          }),
         ],
       ),
     );

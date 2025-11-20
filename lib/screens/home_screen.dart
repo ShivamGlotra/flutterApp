@@ -107,7 +107,10 @@ class _HomeScreenState extends State<HomeScreen> {
               value: HomeScreen._selectedDropdownValue,
               alignment: Alignment.center,
               dropdownColor: const Color.fromARGB(255, 30, 28, 28),
-              style: TextStyle(color: const Color.fromARGB(255, 196, 106, 10)),
+              style: TextStyle(
+                color: const Color.fromARGB(255, 196, 106, 10),
+                fontSize: 25,
+              ),
               items:
                   <String>[
                     'Cricket',
