@@ -17,6 +17,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
       appBar: AppBar(
         title: Text('Players'),
         automaticallyImplyLeading: false,
+        centerTitle: true,
         titleTextStyle: const TextStyle(
           fontSize: 25,
           color: Color.fromARGB(255, 246, 130, 6),

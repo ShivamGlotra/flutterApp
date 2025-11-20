@@ -15,7 +15,7 @@ class _ScoreCardsState extends State<ScoreCards> {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: MediaQuery.of(context).size.height * 0.25,
+        height: 190.0,
         autoPlay: false,
         viewportFraction: 0.7,
       ),

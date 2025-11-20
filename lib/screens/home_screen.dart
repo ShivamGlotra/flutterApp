@@ -22,7 +22,7 @@ class HomeScreen extends StatefulWidget {
     Icons.home,
     Icons.sports_soccer,
     Icons.group,
-    Icons.person,
+    Icons.person, 
     Icons.settings,
   ];
   static final List<Map<String, String>> newsItems = [
