@@ -17,6 +17,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
       appBar: AppBar(
         title: Text('Teams'),
         automaticallyImplyLeading: false,
+        centerTitle: true,
         titleTextStyle: const TextStyle(
           fontSize: 25,
           color: Color.fromARGB(255, 246, 130, 6),

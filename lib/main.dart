@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Game App',
-      theme: ThemeData(primarySwatch: Colors.blue),
+
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
@@ -26,34 +26,44 @@ class MyApp extends StatelessWidget {
         '/players': (context) => const PlayersScreen(),
         '/settings': (context) => const SettingsScreen(),
       },
-      // onGenerateRoute: (settings) {
-      //   Widget page;
-      //   switch (settings.name) {
-      //     case '/':
-      //       page = const HomeScreen();
-      //       break;
-      //     case '/matches':
-      //       page = const MatchesScreen();
-      //       break;
-      //     case '/teams':
-      //       page = const TeamsScreen();
-      //       break;
-      //     case '/players':
-      //       page = const PlayersScreen();
-      //       break;
-      //     case '/settings':
-      //       page = const SettingsScreen();
-      //       break;
-      //     default:
-      //       return null;
-      //   }
-      //   return PageRouteBuilder(
-      //     pageBuilder: (context, animation, secondaryAnimation) => page,
-      //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      //       return FadeTransition(opacity: animation, child: child);
-      //     },
-      //   );
-      // },
+      theme: ThemeData(
+        // primarySwatch: Colors.blue,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.windows: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          },
+        ),
+        // onGenerateRoute: (settings) {
+        //   Widget page;
+        //   switch (settings.name) {
+        //     case '/':
+        //       page = const HomeScreen();
+        //       break;
+        //     case '/matches':
+        //       page = const MatchesScreen();
+        //       break;
+        //     case '/teams':
+        //       page = const TeamsScreen();
+        //       break;
+        //     case '/players':
+        //       page = const PlayersScreen();
+        //       break;
+        //     case '/settings':
+        //       page = const SettingsScreen();
+        //       break;
+        //     default:
+        //       return null;
+        //   }
+        //   return PageRouteBuilder(
+        //     pageBuilder: (context, animation, secondaryAnimation) => page,
+        //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        //       return FadeTransition(opacity: animation, child: child);
+        //     },
+        //   );
+        // },
+      ),
     );
   }
 }
