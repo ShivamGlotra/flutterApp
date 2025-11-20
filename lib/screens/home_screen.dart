@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:game_app/widgets/score_cards.dart';
 import '../widgets/expansion_drawer.dart';
-import '../widgets/footer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -101,13 +100,16 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.sports_score_rounded, size: 40),
+            Icon(Icons.sports_cricket, size: 40),
             SizedBox(width: 16),
             DropdownButton<String>(
               value: HomeScreen._selectedDropdownValue,
               alignment: Alignment.center,
               dropdownColor: const Color.fromARGB(255, 30, 28, 28),
-              style: TextStyle(color: const Color.fromARGB(255, 196, 106, 10)),
+              style: TextStyle(
+                color: const Color.fromARGB(255, 196, 106, 10),
+                fontSize: 25,
+              ),
               items:
                   <String>[
                     'Cricket',
@@ -155,13 +157,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            ExpansionDrawer(
-              title: 'Live Scores',
-              subTitles: HomeScreen.liveScoreSubTitles,
-            ),
-            ExpansionDrawer(
-              title: 'Schedules',
-              subTitles: HomeScreen.liveScoreSubTitles,
+            Container(
+              color: Colors.grey[350],
+              child: Column(
+                children: [
+                  ExpansionDrawer(
+                    title: 'Live Scores',
+                    subTitles: HomeScreen.liveScoreSubTitles,
+                  ),
+                  ExpansionDrawer(
+                    title: 'Schedules',
+                    subTitles: HomeScreen.liveScoreSubTitles,
+                  ),
+                ],
+              ),
             ),
             // Add more ExpansionDrawers as needed
           ],
@@ -208,10 +217,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: Footer(
-        footerItems: HomeScreen.footerItems,
-        footerIcons: HomeScreen.footerIcons,
       ),
     );
   }
