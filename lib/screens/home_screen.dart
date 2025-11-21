@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:game_app/widgets/score_cards.dart';
 import '../widgets/expansion_drawer.dart';
-import '../widgets/footer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +21,7 @@ class HomeScreen extends StatefulWidget {
     Icons.home,
     Icons.sports_soccer,
     Icons.group,
-    Icons.person, 
+    Icons.person,
     Icons.settings,
   ];
   static final List<Map<String, String>> newsItems = [
@@ -138,6 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: const Color.fromARGB(255, 30, 28, 28),
       ),
       drawer: Drawer(
+        backgroundColor: Colors.grey[350],
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -158,20 +158,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Container(
-              color: Colors.grey[350],
-              child: Column(
-                children: [
-                  ExpansionDrawer(
-                    title: 'Live Scores',
-                    subTitles: HomeScreen.liveScoreSubTitles,
-                  ),
-                  ExpansionDrawer(
-                    title: 'Schedules',
-                    subTitles: HomeScreen.liveScoreSubTitles,
-                  ),
-                ],
-              ),
+            Column(
+              children: [
+                ExpansionDrawer(
+                  title: 'Live Scores',
+                  subTitles: HomeScreen.liveScoreSubTitles,
+                ),
+                ExpansionDrawer(
+                  title: 'Schedules',
+                  subTitles: HomeScreen.liveScoreSubTitles,
+                ),
+              ],
             ),
             // Add more ExpansionDrawers as needed
           ],
@@ -218,10 +215,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: Footer(
-        footerItems: HomeScreen.footerItems,
-        footerIcons: HomeScreen.footerIcons,
       ),
     );
   }
