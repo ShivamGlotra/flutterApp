@@ -35,7 +35,8 @@ class _TeamsScreenState extends State<TeamsScreen> {
                 return Expanded(
                   child: Padding(
                     padding: EdgeInsets.only(
-                      right: index == TeamsScreen.filters.length - 1 ? 0 : 8,
+                      left: index == 0 ? 4 : 8,
+                      right: index == TeamsScreen.filters.length - 1 ? 4 : 8,
                     ),
                     child: TextButton(
                       style: TextButton.styleFrom(
@@ -74,7 +75,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: 20,
                 padding: EdgeInsets.only(left: 10, top: 10, right: 10),
                 itemBuilder: (context, index) {
                   return TextButton(
@@ -113,6 +114,11 @@ class _TeamsScreenState extends State<TeamsScreen> {
                       );
                     },
                     child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: AssetImage(
+                          'assets/team_placeholder.png',
+                        ),
+                      ),
                       title: Text(
                         'Team ${index + 1}',
                         style: TextStyle(color: Colors.white),
