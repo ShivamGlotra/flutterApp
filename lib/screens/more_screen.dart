@@ -45,6 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: Center(
         child: ListView.builder(
+          padding: const EdgeInsets.only(top: 10.0),
           itemCount: items.length, // number of players/teams
           itemBuilder: (context, index) {
             return Container(

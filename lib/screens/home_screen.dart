@@ -10,6 +10,23 @@ class HomeScreen extends StatefulWidget {
     'Schedules',
     'Results',
   ];
+  static const List<String> teamSubtitles = [
+    'International Teams',
+    'Domestic Teams',
+    'Franchise Teams',
+  ];
+  static const List<String> rankingSubtitles = ['Top Teams', 'Top Players'];
+  static const List<String> playerSubtitles = [
+    'Top Batsmen',
+    'Top Bowlers',
+    'All-Rounders',
+  ];
+  static const List<String> moreSubTitles = [
+    'News',
+    'Statistics',
+    'Settings',
+    'Help & Support',
+  ];
   static const List<String> footerItems = [
     'Home',
     'Matches',
@@ -86,6 +103,15 @@ class HomeScreen extends StatefulWidget {
     },
   ];
 
+  static const List<IconData> dropdownIcons = [
+    Icons.sports_cricket,
+    Icons.sports_soccer,
+    Icons.sports_baseball,
+    Icons.sports_basketball,
+    Icons.sports_tennis,
+    Icons.sports_hockey,
+  ];
+
   static String _selectedDropdownValue = 'Cricket';
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -100,7 +126,17 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.sports_cricket, size: 40),
+            Icon(
+              HomeScreen.dropdownIcons[<String>[
+                'Cricket',
+                'Soccer',
+                'Baseball',
+                'Basketball',
+                'Tennis',
+                'Hockey',
+              ].indexOf(HomeScreen._selectedDropdownValue)],
+              size: 30,
+            ),
             SizedBox(width: 16),
             DropdownButton<String>(
               value: HomeScreen._selectedDropdownValue,
@@ -125,6 +161,32 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   }).toList(),
               onChanged: (String? newValue) {
+                // showDialog(
+                //   context: context,
+                //   builder: (context) {
+                //     return AlertDialog(
+                //       backgroundColor: const Color.fromARGB(255, 50, 48, 48),
+                //       title: Text(
+                //         'Sorry, $newValue data is not available yet.',
+                //         textAlign: TextAlign.center,
+                //         style: const TextStyle(
+                //           color: Colors.white,
+                //           fontSize: 18,
+                //         ),
+                //       ),
+
+                //       actions: [
+                //         TextButton(
+                //           onPressed: () => Navigator.of(context).pop(),
+                //           child: const Text(
+                //             'Close',
+                //             style: TextStyle(color: Colors.blue),
+                //           ),
+                //         ),
+                //       ],
+                //     );
+                //   },
+                // );
                 setState(() {
                   HomeScreen._selectedDropdownValue = newValue!;
                 });
@@ -165,8 +227,31 @@ class _HomeScreenState extends State<HomeScreen> {
                   subTitles: HomeScreen.liveScoreSubTitles,
                 ),
                 ExpansionDrawer(
-                  title: 'Schedules',
-                  subTitles: HomeScreen.liveScoreSubTitles,
+                  title: 'Teams',
+                  subTitles: HomeScreen.teamSubtitles,
+                ),
+                ExpansionDrawer(
+                  title: "Rankings",
+                  subTitles: HomeScreen.rankingSubtitles,
+                ),
+                ExpansionDrawer(
+                  title: 'Players',
+                  subTitles: HomeScreen.playerSubtitles,
+                ),
+                ExpansionDrawer(
+                  title: 'More',
+                  subTitles: HomeScreen.moreSubTitles,
+                ),
+                SizedBox(height: 20),
+                Text(
+                  textAlign: TextAlign.right,
+                  'Version 0.0.1',
+                  style: TextStyle(color: Colors.grey[600], fontSize: 14),
+                ),
+                Text(
+                  textAlign: TextAlign.right,
+                  '@GetScores 2025',
+                  style: TextStyle(color: Colors.grey[600], fontSize: 14),
                 ),
               ],
             ),
@@ -185,10 +270,6 @@ class _HomeScreenState extends State<HomeScreen> {
               width: MediaQuery.of(context).size.width, // Set a fixed height
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 36, 34, 34),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15.0),
-                  topRight: Radius.circular(15.0),
-                ),
               ),
               child: Scrollbar(
                 thumbVisibility: true,
