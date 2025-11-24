@@ -60,23 +60,72 @@ class _TeamsScreenState extends State<TeamsScreen> {
                 );
               }),
             ),
-            SizedBox(height: 30),
-            for (int i = 0; i < 10; i++)
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'https://example.com/team_logo.png',
-                  ), // Replace with actual image URL
-                ),
-                title: Text('Team Name', style: TextStyle(color: Colors.white)),
-                subtitle: Text(
-                  'Team Details',
-                  style: TextStyle(color: Colors.white70),
-                ),
-                onTap: () {
-                  // Handle team selection
+            SizedBox(height: 10),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.95,
+              height: 50,
+              child: SearchBar(
+                hintText: 'Search Teams',
+                leading: Icon(Icons.search, color: Colors.black),
+                onChanged: (value) {
+                  // Handle search input
                 },
               ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 10,
+                padding: EdgeInsets.only(left: 10, top: 10, right: 10),
+                itemBuilder: (context, index) {
+                  return TextButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            backgroundColor: const Color.fromARGB(
+                              255,
+                              50,
+                              48,
+                              48,
+                            ),
+                            title: Text(
+                              'Team ${index + 1} Details Coming Soon',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            content: Text(
+                              'This feature is under development. Stay tuned for updates!',
+                              style: TextStyle(color: Colors.white70),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  'Close',
+                                  style: TextStyle(color: Colors.blue),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: ListTile(
+                      title: Text(
+                        'Team ${index + 1}',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      subtitle: Text(
+                        'Test Ranks : ${index + 1}, ODI Ranks : ${index + 2}, T20 Ranks : ${index + 3}',
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
