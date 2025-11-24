@@ -4,7 +4,7 @@ import 'screens/home_screen.dart';
 import 'screens/matches_screen.dart';
 import 'screens/teams_screen.dart';
 import 'screens/players_screen.dart';
-import 'screens/settings_screen.dart';
+import 'screens/more_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,8 +65,8 @@ class _MainNavigationState extends State<MainNavigation> {
           BottomNavigationBarItem(icon: Icon(Icons.group), label: 'Teams'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Players'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.more_outlined),
+            label: 'More',
           ),
         ],
         currentIndex: _selectedIndex,
